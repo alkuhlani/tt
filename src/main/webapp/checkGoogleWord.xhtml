@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style type="text/css">
+            .value {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <p:button value="Get All Records" outcome="allRecoreds" />
+        <p:button value="New Record POST API" outcome="newRecord" />
+        <p:separator/>
+        <h:form>
+            <p:panelGrid id="panel" columns="1" 
+                         layout="grid" styleClass="ui-panelgrid-blank form-group" 
+                         style="border:0px none; background-color:transparent" >
+                <p:panelGrid  columns="3" 
+                              layout="grid"
+                              style="border:0px none; background-color:transparent" >
+                    <p:inputText id="api_key" value="#{checkGoogleWord.inputGoogle}" required="true" placeholder="Plaese Type Google"/>
+                    <p:commandButton value="Get All Recordes" actionListener="#{checkGoogleWord.check()}" update="@form"/>
+                    <p:outputLabel rendered="#{checkGoogleWord.isDone}" value="#{checkGoogleWord.outputGoogle}"/>
+                </p:panelGrid>
+               
+            </p:panelGrid>
+        </h:form>
+        <div>
+
+        </div>
+        <div>
+
+        </div>
+    </body>
+</html>

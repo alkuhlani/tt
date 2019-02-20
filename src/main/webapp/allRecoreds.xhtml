@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style type="text/css">
+            .value {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+         <p:button value="Check Google Word" outcome="checkGoogleWord" />
+         <p:button value="New Record POST API" outcome="newRecord" />
+        <p:separator/>
+        <h:form>
+            <p:panelGrid id="panel" columns="1" 
+                         layout="grid" styleClass="ui-panelgrid-blank form-group" 
+                         style="border:0px none; background-color:transparent" >
+                <p:panelGrid  columns="2" 
+                              layout="grid" styleClass="ui-panelgrid-blank form-group" 
+                              style="border:0px none; background-color:transparent" >
+                    <p:inputText id="api_key" value="#{consumeGitApi.apiKey}" required="true" placeholder="Plaese Type API Key Here"/>
+                    <p:commandButton value="Get All Recordes" actionListener="#{consumeGitApi.prepareAllLocations()}" update="@form"/>
+                    <p:outputLabel value="If you get this error 'isEC' , it's mean your API Key is incorrect, and please use JDK8u161 or above if you use Payara 5"/>
+                </p:panelGrid>
+                <p:dataTable id="records" value="#{consumeGitApi.records}" var="item">
+                    <p:column headerText="ID">
+                        <p:outputLabel value="#{item.id}"/>
+                    </p:column>
+                    <p:column headerText="latitude">
+                        <p:outputLabel value="#{item.latitude}"/>
+                    </p:column>
+                    <p:column headerText="longitude">
+                        <p:outputLabel value="#{item.longitude}"/>
+                    </p:column>
+                    <p:column headerText="formattedAddress">
+                        <p:outputLabel value="#{item.formattedAddress}"/>
+                    </p:column>
+                  
+                   
+                    
+                </p:dataTable>
+            </p:panelGrid>
+        </h:form>
+        <div>
+
+        </div>
+        <div>
+
+        </div>
+    </body>
+</html>
